@@ -18,7 +18,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 sequelize
-    .sync({ alter: true })
+    .sync()
     .then(() => console.log("✅ Base de datos sincronizada"))
     .catch((err) => console.error("❌ Error al conectar BD:", err));
 
