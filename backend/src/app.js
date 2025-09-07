@@ -5,6 +5,7 @@ import sequelize from "./config/database.js";
 
 import bookRoutes from "./routes/books.js";
 import authRoutes from "./routes/auth.js";
+import { swaggerUi, swaggerSpec } from "./config/swagger.js";
 
 dotenv.config();
 const app = express();
@@ -14,12 +15,13 @@ app.use(express.json());
 
 app.use("/api/books", bookRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 sequelize
-  .sync({ alter: true })
-  .then(() => console.log("✅ Base de datos sincronizada"))
-  .catch((err) => console.error("❌ Error al conectar BD:", err));
+    .sync({ alter: true })
+    .then(() => console.log("✅ Base de datos sincronizada"))
+    .catch((err) => console.error("❌ Error al conectar BD:", err));
 
 app.listen(process.env.PORT || 4000, () => {
-  console.log("Servidor corriendo en puerto", process.env.PORT || 4000);
+    console.log("Servidor corriendo en puerto", process.env.PORT || 4000);
 });
