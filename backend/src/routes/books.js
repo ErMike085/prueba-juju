@@ -12,7 +12,6 @@ const router = express.Router();
  *       type: object
  *       required:
  *         - title
- *         - author
  *         - year
  *       properties:
  *         id:
@@ -21,9 +20,6 @@ const router = express.Router();
  *         title:
  *           type: string
  *           description: Título del libro
- *         author:
- *           type: string
- *           description: Autor del libro
  *         year:
  *           type: integer
  *           description: Año de publicación
@@ -34,7 +30,6 @@ const router = express.Router();
  *       example:
  *         id: 1
  *         title: "El Quijote"
- *         author: "Miguel de Cervantes"
  *         year: 1605
  *         status: "disponible"
  */
